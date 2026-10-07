@@ -1,0 +1,729 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #24151b;
+    color: #f8f1ea;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================================
+   STORY
+========================================= */
+
+.story {
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    overflow: hidden;
+}
+
+
+/* =========================================
+   ALL SCREENS
+========================================= */
+
+.screen {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100svh;
+
+    min-height: 0;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: scale(1.02);
+
+    transition:
+        opacity 0.8s ease,
+        transform 1s ease,
+        visibility 0.8s ease;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: scale(1);
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.intro-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(150, 70, 95, 0.20),
+            transparent 50%
+        ),
+        #24151b;
+}
+
+.intro-content {
+    width: 88%;
+    max-width: 420px;
+
+    text-align: center;
+
+    animation: introAppear 1.5s ease forwards;
+}
+
+.small-text {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    color: rgba(248, 241, 234, 0.55);
+
+    margin-bottom: 24px;
+}
+
+.intro-content h1 {
+    font-family: Georgia, serif;
+
+    font-size: clamp(55px, 15vw, 82px);
+
+    font-weight: 400;
+    line-height: 1;
+
+    letter-spacing: -3px;
+}
+
+.intro-content h1 span {
+    font-size: 30px;
+    vertical-align: middle;
+    margin-left: 3px;
+}
+
+.intro-message {
+    margin-top: 30px;
+
+    font-size: 15px;
+    line-height: 1.8;
+
+    color: rgba(248, 241, 234, 0.70);
+}
+
+#startButton {
+    margin-top: 42px;
+
+    padding: 14px 25px;
+
+    border-radius: 50px;
+
+    border: 1px solid rgba(248, 241, 234, 0.25);
+
+    background: rgba(248, 241, 234, 0.08);
+
+    color: #f8f1ea;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+#startButton:active {
+    transform: scale(0.95);
+}
+
+
+/* =========================================
+   PHOTO SCREENS
+========================================= */
+
+.photo-screen {
+    background: #100b0d;
+}
+
+
+/* =========================================
+   PHOTO CONTAINER
+========================================= */
+
+.photo-container {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================
+   BLURRED BACKGROUND
+   Creates cinematic fill without cropping
+========================================= */
+
+.photo-container::before {
+    content: "";
+
+    position: absolute;
+    inset: -30px;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    filter: blur(22px);
+
+    transform: scale(1.08);
+
+    opacity: 0.55;
+
+    z-index: 0;
+}
+
+
+/* Individual blurred backgrounds */
+
+.photo-1 .photo-container::before {
+    background-image: url("images/photo1.jpg");
+}
+
+.photo-2 .photo-container::before {
+    background-image: url("images/photo2.jpg");
+}
+
+.photo-3 .photo-container::before {
+    background-image: url("images/photo3.jpg");
+}
+
+.photo-4 .photo-container::before {
+    background-image: url("images/photo4.jpg");
+}
+
+.photo-5 .photo-container::before {
+    background-image: url("images/photo5.jpg");
+}
+
+.photo-6 .photo-container::before {
+    background-image: url("images/photo6.jpg");
+}
+
+.photo-7 .photo-container::before {
+    background-image: url("images/photo7.jpg");
+}
+
+
+/* =========================================
+   ACTUAL PHOTO
+========================================= */
+
+.story-photo {
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    object-position: center center;
+
+    display: block;
+
+    transform: scale(1.015);
+
+    transition:
+        transform 2.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+
+/* Very subtle cinematic movement */
+
+.screen.active .story-photo {
+    transform: scale(1.015);
+}
+
+
+/* =========================================
+   PHOTO-SPECIFIC FRAMING
+========================================= */
+
+/* PHOTO 1 — BABY */
+
+.photo-1 .story-photo {
+    object-position: center center;
+}
+
+
+/* PHOTO 2 — NIGHT PORTRAIT */
+
+.photo-2 .story-photo {
+    object-position: center center;
+}
+
+
+/* PHOTO 3 — MONUMENT */
+
+.photo-3 .story-photo {
+    object-position: center center;
+}
+
+
+/* PHOTO 4 — STONE WALL */
+
+.photo-4 .story-photo {
+    object-position: center center;
+}
+
+
+/* PHOTO 5 — SIDE PROFILE + CAKE */
+
+.photo-5 .story-photo {
+    object-position: center center;
+}
+
+
+/* PHOTO 6 — BOTH OF YOU */
+
+.photo-6 .story-photo {
+    object-position: center center;
+}
+
+
+/* PHOTO 7 — FACING CAMERA + CAKE */
+
+.photo-7 .story-photo {
+    object-position: center center;
+}
+
+
+/* =========================================
+   DARK CINEMATIC OVERLAY
+========================================= */
+
+.photo-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.02) 20%,
+            rgba(0, 0, 0, 0.10) 50%,
+            rgba(0, 0, 0, 0.72) 100%
+        );
+}
+
+
+/* =========================================
+   PHOTO CAPTION
+========================================= */
+
+.photo-caption {
+    position: absolute;
+
+    left: 8%;
+    right: 8%;
+    bottom: 9%;
+
+    z-index: 5;
+
+    color: #fff;
+
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity 1s ease 0.45s,
+        transform 1s ease 0.45s;
+}
+
+.screen.active .photo-caption {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.photo-caption p {
+    font-size: 14px;
+
+    line-height: 1.4;
+
+    margin-bottom: 8px;
+
+    opacity: 0.78;
+}
+
+.photo-caption h2 {
+    font-family: Georgia, serif;
+
+    font-size: clamp(30px, 8vw, 45px);
+
+    font-weight: 400;
+
+    line-height: 1.05;
+}
+
+.caption-small {
+    margin-top: 18px;
+
+    max-width: 330px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.72);
+}
+
+
+/* =========================================
+   PHOTO-SPECIFIC CAPTION POSITIONS
+========================================= */
+
+/* Baby — keep text lower */
+
+.photo-1 .photo-caption {
+    bottom: 8%;
+}
+
+
+/* Night portrait */
+
+.photo-2 .photo-caption {
+    bottom: 9%;
+}
+
+
+/* Monument — slightly lower */
+
+.photo-3 .photo-caption {
+    bottom: 8%;
+}
+
+
+/* Stone wall */
+
+.photo-4 .photo-caption {
+    bottom: 8%;
+}
+
+
+/* Cake side profile */
+
+.photo-5 .photo-caption {
+    bottom: 8%;
+}
+
+
+/* BOTH OF YOU — don't cover faces */
+
+.photo-6 .photo-caption {
+    bottom: 8%;
+}
+
+
+/* Final cake photo */
+
+.photo-7 .photo-caption {
+    bottom: 8%;
+}
+
+
+/* =========================================
+   STORY PROGRESS
+========================================= */
+
+.story-progress {
+    position: fixed;
+
+    top: 18px;
+    left: 6%;
+    right: 6%;
+
+    height: 2px;
+
+    display: flex;
+
+    gap: 4px;
+
+    z-index: 9999;
+}
+
+.progress-segment {
+    flex: 1;
+
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.22);
+
+    border-radius: 10px;
+}
+
+.progress-segment.active {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+
+/* =========================================
+   BIRTHDAY SCREEN
+========================================= */
+
+.birthday-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(150, 70, 95, 0.28),
+            transparent 55%
+        ),
+        #24151b;
+
+    text-align: center;
+}
+
+.birthday-content {
+    width: 88%;
+    max-width: 500px;
+
+    animation: birthdayAppear 2s ease forwards;
+}
+
+.birthday-small {
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    color: rgba(248, 241, 234, 0.55);
+
+    margin-bottom: 28px;
+}
+
+.birthday-content h1 {
+    font-family: Georgia, serif;
+
+    font-size: clamp(48px, 14vw, 78px);
+
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    letter-spacing: -2px;
+}
+
+.birthday-content h1 span {
+    font-size: 28px;
+}
+
+.birthday-subtitle {
+    margin-top: 32px;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    color: rgba(248, 241, 234, 0.68);
+}
+
+
+/* =========================================
+   FINAL SCREEN
+========================================= */
+
+.final-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(150, 70, 95, 0.18),
+            transparent 55%
+        ),
+        #24151b;
+
+    text-align: center;
+}
+
+.final-content {
+    width: 88%;
+    max-width: 500px;
+
+    animation: finalAppear 2s ease forwards;
+}
+
+.final-small {
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    color: rgba(248, 241, 234, 0.45);
+
+    margin-bottom: 30px;
+}
+
+.final-content h2 {
+    font-family: Georgia, serif;
+
+    font-size: clamp(30px, 8vw, 44px);
+
+    font-weight: 400;
+
+    line-height: 1.15;
+}
+
+.final-message {
+    margin-top: 28px;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    color: rgba(248, 241, 234, 0.68);
+}
+
+.final-heart {
+    margin-top: 30px;
+
+    font-size: 30px;
+}
+
+.made-for-you {
+    margin-top: 35px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: rgba(248, 241, 234, 0.35);
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes introAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes birthdayAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes finalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   MOBILE REFINEMENT
+========================================= */
+
+@media (max-width: 600px) {
+
+    .photo-caption {
+        left: 7%;
+        right: 7%;
+        bottom: 8%;
+    }
+
+    .photo-caption h2 {
+        font-size: clamp(28px, 8vw, 38px);
+    }
+
+    .photo-caption p {
+        font-size: 13px;
+    }
+
+    .caption-small {
+        font-size: 13px;
+    }
+
+}
+
+
+/* =========================================
+   VERY SHORT SCREENS
+========================================= */
+
+@media (max-height: 700px) {
+
+    .photo-caption {
+        bottom: 7%;
+    }
+
+    .photo-caption h2 {
+        font-size: 30px;
+    }
+
+}
